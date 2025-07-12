@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background-color: #0b0b0b;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #0b0b0b;
+  font-family: 'Sora', system-ui, sans-serif;
+}
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0b0b;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 768px) {
+  html, body {
+    width: 100vw;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+    -webkit-overscroll-behavior: none;
+  }
+  
+  * {
+    max-width: 100vw;
+  }
+  
+  /* Fix for iOS Safari bottom spacing */
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+    touch-action: pan-y;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  .container, .max-w-4xl, .max-w-6xl, .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Fix pull-to-refresh on mobile */
+  html {
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Ensure full height coverage */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+  
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+/* Custom pulse animation for badge */
+@keyframes pulse-border {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(104, 49, 243, 0.1);
+    border-color: rgba(104, 49, 243, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(104, 49, 243, 0.2);
+    border-color: rgba(104, 49, 243, 0.5);
+  }
+}
